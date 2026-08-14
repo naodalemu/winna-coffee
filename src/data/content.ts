@@ -4,6 +4,9 @@ export interface Credited {
   creditHref: string;
 }
 
+export const contactEmails = ["mehretleg@gmail.com", "winnatradingplc@gmail.com"];
+export const contactPhone = "+251 929 904 323";
+
 export interface Variety extends Credited {
   slot: string;
   name: string;

@@ -47,7 +47,7 @@ function Impact() {
             better beans.
           </p>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 34 }}>
+        <div className="grid-3" style={{ gap: 34 }}>
           {values.map((v) => (
             <div key={v.n} style={{ borderTop: "2px solid #C9A24B", paddingTop: 24 }}>
               <div

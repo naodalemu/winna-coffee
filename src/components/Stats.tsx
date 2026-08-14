@@ -57,11 +57,10 @@ function Stats() {
   return (
     <div ref={nodeRef} style={{ background: "#F6F1E7", padding: "88px 44px" }}>
       <div
+        className="grid-5"
         style={{
           maxWidth: 1280,
           margin: "0 auto",
-          display: "grid",
-          gridTemplateColumns: "repeat(5,1fr)",
           gap: 20,
         }}
       >

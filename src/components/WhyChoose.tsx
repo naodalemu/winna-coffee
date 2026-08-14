@@ -30,9 +30,8 @@ function WhyChoose() {
           </h2>
         </div>
         <div
+          className="grid-3"
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3,1fr)",
             gap: 2,
             background: "#E2D9C6",
             border: "1px solid #E2D9C6",

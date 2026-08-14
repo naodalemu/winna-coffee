@@ -5,11 +5,10 @@ function About() {
   return (
     <div id="about" style={{ background: "#FBF8F1", padding: "120px 44px" }}>
       <div
+        className="grid-2"
         style={{
           maxWidth: 1180,
           margin: "0 auto",
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
           gap: 80,
           alignItems: "center",
         }}

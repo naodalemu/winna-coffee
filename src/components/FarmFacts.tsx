@@ -35,7 +35,7 @@ function FarmFacts() {
             shape every bean.
           </p>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 26 }}>
+        <div className="grid-3" style={{ gap: 26 }}>
           {farmFacts.map((o) => (
             <div
               key={o.slot}

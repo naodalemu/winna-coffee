@@ -1,12 +1,13 @@
+import { contactEmails, contactPhone } from "../data/content";
+
 function Contact() {
   return (
     <div id="contact" style={{ background: "#14261A", padding: "120px 44px" }}>
       <div
+        className="grid-2"
         style={{
           maxWidth: 1180,
           margin: "0 auto",
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
           gap: 70,
         }}
       >
@@ -59,7 +60,7 @@ function Contact() {
                 <div style={{ fontSize: 12, color: "#8FA093", textTransform: "uppercase", letterSpacing: 1 }}>
                   Phone
                 </div>
-                <div style={{ fontSize: 15, color: "#EAE3D4" }}>+251 929 904 323</div>
+                <div style={{ fontSize: 15, color: "#EAE3D4" }}>{contactPhone}</div>
               </div>
             </div>
             <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
@@ -82,7 +83,11 @@ function Contact() {
                 <div style={{ fontSize: 12, color: "#8FA093", textTransform: "uppercase", letterSpacing: 1 }}>
                   Email
                 </div>
-                <div style={{ fontSize: 15, color: "#EAE3D4" }}>mehratleg@gmail.com</div>
+                {contactEmails.map((email) => (
+                  <div key={email} style={{ fontSize: 15, color: "#EAE3D4" }}>
+                    {email}
+                  </div>
+                ))}
               </div>
             </div>
             <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
@@ -131,7 +136,7 @@ function Contact() {
           </div>
         </div>
         <div style={{ background: "#FBF8F1", borderRadius: 6, padding: "38px 36px" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
+          <div className="grid-2-form" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
             <div>
               <label style={labelStyle}>Name</label>
               <input placeholder="Your name" style={inputStyle} />
@@ -141,7 +146,7 @@ function Contact() {
               <input placeholder="you@company.com" style={inputStyle} />
             </div>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
+          <div className="grid-2-form" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
             <div>
               <label style={labelStyle}>Variety</label>
               <select style={inputStyle}>

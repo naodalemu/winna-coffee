@@ -1,13 +1,12 @@
-import { socials } from "../data/content";
+import { contactEmails, contactPhone, socials } from "../data/content";
 
 function Footer() {
   return (
     <div style={{ background: "#0F1D14", padding: "70px 44px 34px" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto" }}>
         <div
+          className="grid-4"
           style={{
-            display: "grid",
-            gridTemplateColumns: "1.6fr 1fr 1fr 1.3fr",
             gap: 44,
             paddingBottom: 48,
             borderBottom: "1px solid rgba(201,162,75,0.18)",
@@ -83,9 +82,10 @@ function Footer() {
               Addis Ababa, Ethiopia
             </div>
             <div style={{ fontSize: 14, color: "#B9C7BC", lineHeight: 1.7 }}>
-              mehratleg@gmail.com
-              <br />
-              +251 929 904 323
+              {contactEmails.map((email) => (
+                <div key={email}>{email}</div>
+              ))}
+              {contactPhone}
             </div>
           </div>
         </div>

@@ -35,7 +35,7 @@ function CoffeeVarieties() {
             character of its altitude and soil.
           </p>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 28 }}>
+        <div className="grid-3" style={{ gap: 28 }}>
           {varieties.map((p) => (
             <div
               key={p.slot}

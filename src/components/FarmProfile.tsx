@@ -35,13 +35,12 @@ function FarmProfile() {
             and dry processing.
           </p>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 30 }}>
+        <div className="grid-2" style={{ gap: 30 }}>
           {farmProfile.map((p) => (
             <div
               key={p.slot}
+              className="farm-profile-card"
               style={{
-                display: "grid",
-                gridTemplateColumns: "180px 1fr",
                 gap: 0,
                 background: "#F6F1E7",
                 borderRadius: 6,

@@ -34,7 +34,7 @@ function Certifications() {
             here.
           </p>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 16 }}>
+        <div className="grid-4-eq" style={{ gap: 16 }}>
           {certifications.map((c, i) => (
             <div
               key={`${c.label}-${i}`}

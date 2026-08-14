@@ -3,8 +3,20 @@ import { farmFacts } from "../data/content";
 
 type MenuKey = "products" | "origins" | null;
 
+const navLinkStyle = { color: "#EAE3D4", fontSize: 14, fontWeight: 500 };
+const enquireStyle = {
+  background: "#C9A24B",
+  color: "#1B2A1E",
+  fontSize: 13,
+  fontWeight: 700,
+  letterSpacing: 0.5,
+  padding: "12px 22px",
+  borderRadius: 2,
+};
+
 function Nav() {
   const [openMenu, setOpenMenu] = useState<MenuKey>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
     <div
@@ -22,7 +34,7 @@ function Nav() {
         style={{
           maxWidth: 1280,
           margin: "0 auto",
-          padding: "0 32px",
+          padding: "0 24px",
           height: 78,
           display: "flex",
           alignItems: "center",
@@ -46,6 +58,7 @@ function Nav() {
             WINNA
           </div>
           <div
+            className="hero-eyebrow"
             style={{
               fontSize: 9,
               letterSpacing: 3,
@@ -59,16 +72,8 @@ function Nav() {
           </div>
         </a>
 
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 26,
-            flexShrink: 0,
-            whiteSpace: "nowrap",
-          }}
-        >
-          <a href="#top" style={{ color: "#EAE3D4", fontSize: 14, fontWeight: 500 }}>
+        <div className="nav-links" style={{ flexShrink: 0 }}>
+          <a href="#top" style={navLinkStyle}>
             Home
           </a>
           <div
@@ -85,7 +90,7 @@ function Nav() {
           >
             Coffee <span style={{ fontSize: 9, color: "#C9A24B" }}>▾</span>
           </div>
-          <a href="#about" style={{ color: "#EAE3D4", fontSize: 14, fontWeight: 500 }}>
+          <a href="#about" style={navLinkStyle}>
             About
           </a>
           <div
@@ -102,30 +107,71 @@ function Nav() {
           >
             The Farm <span style={{ fontSize: 9, color: "#C9A24B" }}>▾</span>
           </div>
-          <a href="#process" style={{ color: "#EAE3D4", fontSize: 14, fontWeight: 500 }}>
+          <a href="#process" style={navLinkStyle}>
             Process
           </a>
-          <a href="#impact" style={{ color: "#EAE3D4", fontSize: 14, fontWeight: 500 }}>
+          <a href="#impact" style={navLinkStyle}>
             Impact
           </a>
-          <a href="#contact" style={{ color: "#EAE3D4", fontSize: 14, fontWeight: 500 }}>
+          <a href="#contact" style={navLinkStyle}>
             Contact
           </a>
-          <a
-            href="#contact"
-            style={{
-              background: "#C9A24B",
-              color: "#1B2A1E",
-              fontSize: 13,
-              fontWeight: 700,
-              letterSpacing: 0.5,
-              padding: "12px 22px",
-              borderRadius: 2,
-            }}
-          >
+          <a href="#contact" style={enquireStyle}>
             Enquire Now
           </a>
         </div>
+
+        <button
+          type="button"
+          className="nav-toggle"
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileOpen}
+          onClick={() => setMobileOpen((v) => !v)}
+          style={{
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: 5,
+            width: 40,
+            height: 40,
+            background: "transparent",
+            border: "1px solid rgba(201,162,75,0.4)",
+            borderRadius: 3,
+            cursor: "pointer",
+            flexShrink: 0,
+          }}
+        >
+          <span
+            style={{
+              display: "block",
+              width: 18,
+              height: 1.5,
+              background: "#EAE3D4",
+              transform: mobileOpen ? "translateY(6.5px) rotate(45deg)" : "none",
+              transition: "transform .2s ease",
+            }}
+          />
+          <span
+            style={{
+              display: "block",
+              width: 18,
+              height: 1.5,
+              background: "#EAE3D4",
+              opacity: mobileOpen ? 0 : 1,
+              transition: "opacity .2s ease",
+            }}
+          />
+          <span
+            style={{
+              display: "block",
+              width: 18,
+              height: 1.5,
+              background: "#EAE3D4",
+              transform: mobileOpen ? "translateY(-6.5px) rotate(-45deg)" : "none",
+              transition: "transform .2s ease",
+            }}
+          />
+        </button>
 
         {openMenu === "products" && (
           <div
@@ -346,6 +392,54 @@ function Nav() {
           </div>
         )}
       </div>
+
+      {mobileOpen && (
+        <div
+          style={{
+            position: "absolute",
+            top: 78,
+            left: 0,
+            right: 0,
+            background: "#14261A",
+            borderTop: "1px solid rgba(201,162,75,0.22)",
+            boxShadow: "0 24px 50px rgba(20,38,25,0.3)",
+            display: "flex",
+            flexDirection: "column",
+            padding: "18px 24px 28px",
+            gap: 4,
+          }}
+        >
+          {[
+            { href: "#top", label: "Home" },
+            { href: "#coffee", label: "Coffee" },
+            { href: "#about", label: "About" },
+            { href: "#origins", label: "The Farm" },
+            { href: "#process", label: "Process" },
+            { href: "#impact", label: "Impact" },
+            { href: "#contact", label: "Contact" },
+          ].map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              onClick={() => setMobileOpen(false)}
+              style={{
+                ...navLinkStyle,
+                padding: "14px 4px",
+                borderBottom: "1px solid rgba(201,162,75,0.12)",
+              }}
+            >
+              {l.label}
+            </a>
+          ))}
+          <a
+            href="#contact"
+            onClick={() => setMobileOpen(false)}
+            style={{ ...enquireStyle, textAlign: "center", marginTop: 14 }}
+          >
+            Enquire Now
+          </a>
+        </div>
+      )}
     </div>
   );
 }

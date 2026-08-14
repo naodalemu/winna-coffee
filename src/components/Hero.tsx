@@ -45,6 +45,7 @@ function Hero() {
           From the Nibo Sendeka Farm · Sheka Zone, Ethiopia
         </div>
         <h1
+          className="hero-title"
           style={{
             fontFamily: "'Cormorant Garamond',serif",
             fontWeight: 600,
