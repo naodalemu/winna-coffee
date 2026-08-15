@@ -1,8 +1,16 @@
+import { useReveal } from "../hooks/useReveal";
+
 function FAQ() {
+  const intro = useReveal<HTMLDivElement>();
+
   return (
     <div style={{ background: "#FBF8F1", padding: "120px 44px" }}>
       <div style={{ maxWidth: 880, margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: 44 }}>
+        <div
+          ref={intro.ref}
+          className={`reveal${intro.visible ? " is-visible" : ""}`}
+          style={{ textAlign: "center", marginBottom: 44 }}
+        >
           <div
             style={{
               fontSize: 12,

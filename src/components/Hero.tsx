@@ -84,6 +84,7 @@ function Hero() {
         >
           <a
             href="#contact"
+            className="btn-gold"
             style={{
               background: "#C9A24B",
               color: "#1B2A1E",
@@ -98,6 +99,7 @@ function Hero() {
           </a>
           <a
             href="#coffee"
+            className="btn-outline-cream"
             style={{
               background: "rgba(246,241,231,0.1)",
               border: "1px solid rgba(246,241,231,0.5)",

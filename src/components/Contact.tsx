@@ -1,6 +1,11 @@
+import type { CSSProperties } from "react";
 import { contactEmails, contactPhone } from "../data/content";
+import { useReveal } from "../hooks/useReveal";
 
 function Contact() {
+  const left = useReveal<HTMLDivElement>();
+  const form = useReveal<HTMLDivElement>();
+
   return (
     <div id="contact" style={{ background: "#14261A", padding: "120px 44px" }}>
       <div
@@ -11,7 +16,7 @@ function Contact() {
           gap: 70,
         }}
       >
-        <div>
+        <div ref={left.ref} className={`reveal${left.visible ? " is-visible" : ""}`}>
           <div
             style={{
               fontSize: 12,
@@ -117,6 +122,7 @@ function Contact() {
             </div>
             <a
               href="#contact"
+              className="btn-whatsapp"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -135,7 +141,11 @@ function Contact() {
             </a>
           </div>
         </div>
-        <div style={{ background: "#FBF8F1", borderRadius: 6, padding: "38px 36px" }}>
+        <div
+          ref={form.ref}
+          className={`reveal${form.visible ? " is-visible" : ""}`}
+          style={{ "--reveal-delay": "100ms", background: "#FBF8F1", borderRadius: 6, padding: "38px 36px" } as CSSProperties}
+        >
           <div className="grid-2-form" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
             <div>
               <label style={labelStyle}>Name</label>
@@ -175,6 +185,7 @@ function Contact() {
             />
           </div>
           <button
+            className="btn-gold"
             style={{
               width: "100%",
               background: "#C9A24B",

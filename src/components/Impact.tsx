@@ -1,7 +1,11 @@
+import type { CSSProperties } from "react";
 import ImageWithCredit from "./ImageWithCredit";
-import { impactImage, values } from "../data/content";
+import { impactImage, values, type ValueItem } from "../data/content";
+import { useReveal } from "../hooks/useReveal";
 
 function Impact() {
+  const intro = useReveal<HTMLDivElement>();
+
   return (
     <div id="impact" style={{ position: "relative", padding: "120px 44px", overflow: "hidden" }}>
       <div style={{ position: "absolute", inset: 0 }}>
@@ -17,7 +21,11 @@ function Impact() {
         }}
       />
       <div style={{ position: "relative", maxWidth: 1180, margin: "0 auto" }}>
-        <div style={{ maxWidth: 560, marginBottom: 52 }}>
+        <div
+          ref={intro.ref}
+          className={`reveal${intro.visible ? " is-visible" : ""}`}
+          style={{ maxWidth: 560, marginBottom: 52 }}
+        >
           <div
             style={{
               fontSize: 12,
@@ -48,36 +56,50 @@ function Impact() {
           </p>
         </div>
         <div className="grid-3" style={{ gap: 34 }}>
-          {values.map((v) => (
-            <div key={v.n} style={{ borderTop: "2px solid #C9A24B", paddingTop: 24 }}>
-              <div
-                style={{
-                  fontFamily: "'Cormorant Garamond',serif",
-                  fontSize: 22,
-                  color: "#C9A24B",
-                  marginBottom: 10,
-                }}
-              >
-                {v.n}
-              </div>
-              <h3
-                style={{
-                  fontFamily: "'Cormorant Garamond',serif",
-                  fontWeight: 600,
-                  fontSize: 25,
-                  color: "#FBF8F1",
-                  margin: "0 0 12px",
-                }}
-              >
-                {v.title}
-              </h3>
-              <p style={{ fontSize: 14, lineHeight: 1.75, color: "#CBD6CB", margin: 0 }}>
-                {v.desc}
-              </p>
-            </div>
+          {values.map((v, i) => (
+            <ValueColumn key={v.n} v={v} index={i} />
           ))}
         </div>
       </div>
+    </div>
+  );
+}
+
+function ValueColumn({ v, index }: { v: ValueItem; index: number }) {
+  const col = useReveal<HTMLDivElement>();
+
+  return (
+    <div
+      ref={col.ref}
+      className={`reveal${col.visible ? " is-visible" : ""}`}
+      style={{
+        "--reveal-delay": `${index * 80}ms`,
+        borderTop: "2px solid #C9A24B",
+        paddingTop: 24,
+      } as CSSProperties}
+    >
+      <div
+        style={{
+          fontFamily: "'Cormorant Garamond',serif",
+          fontSize: 22,
+          color: "#C9A24B",
+          marginBottom: 10,
+        }}
+      >
+        {v.n}
+      </div>
+      <h3
+        style={{
+          fontFamily: "'Cormorant Garamond',serif",
+          fontWeight: 600,
+          fontSize: 25,
+          color: "#FBF8F1",
+          margin: "0 0 12px",
+        }}
+      >
+        {v.title}
+      </h3>
+      <p style={{ fontSize: 14, lineHeight: 1.75, color: "#CBD6CB", margin: 0 }}>{v.desc}</p>
     </div>
   );
 }

@@ -35,6 +35,7 @@ function Footer() {
               {socials.map((s) => (
                 <div
                   key={s}
+                  className="social-badge"
                   style={{
                     width: 36,
                     height: 36,

@@ -1,7 +1,12 @@
+import type { CSSProperties } from "react";
 import ImageWithCredit from "./ImageWithCredit";
 import { aboutImage } from "../data/content";
+import { useReveal } from "../hooks/useReveal";
 
 function About() {
+  const text = useReveal<HTMLDivElement>();
+  const image = useReveal<HTMLDivElement>();
+
   return (
     <div id="about" style={{ background: "#FBF8F1", padding: "120px 44px" }}>
       <div
@@ -13,7 +18,11 @@ function About() {
           alignItems: "center",
         }}
       >
-        <div>
+        <div
+          ref={text.ref}
+          className={`reveal-side${text.visible ? " is-visible" : ""}`}
+          style={{ "--reveal-x": "-28px" } as CSSProperties}
+        >
           <div
             style={{
               fontSize: 12,
@@ -62,12 +71,16 @@ function About() {
           </a>
         </div>
         <div
+          ref={image.ref}
+          className={`reveal-side img-zoom${image.visible ? " is-visible" : ""}`}
           style={{
+            "--reveal-x": "28px",
+            "--reveal-delay": "120ms",
             height: 520,
             borderRadius: 6,
             overflow: "hidden",
             boxShadow: "0 30px 60px rgba(20,38,25,0.15)",
-          }}
+          } as CSSProperties}
         >
           <ImageWithCredit {...aboutImage} alt="Green coffee beans" />
         </div>

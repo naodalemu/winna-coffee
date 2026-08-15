@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { farmFacts } from "../data/content";
 
 type MenuKey = "products" | "origins" | null;
@@ -17,6 +17,14 @@ const enquireStyle = {
 function Nav() {
   const [openMenu, setOpenMenu] = useState<MenuKey>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <div
@@ -27,6 +35,8 @@ function Nav() {
         background: "rgba(20,38,25,0.98)",
         backdropFilter: "blur(10px)",
         borderBottom: "1px solid rgba(201,162,75,0.22)",
+        boxShadow: scrolled ? "0 8px 24px rgba(0,0,0,0.18)" : "none",
+        transition: "box-shadow .25s ease",
       }}
     >
       <div
@@ -77,6 +87,7 @@ function Nav() {
             Home
           </a>
           <div
+            className="nav-caret"
             onMouseEnter={() => setOpenMenu("products")}
             style={{
               display: "flex",
@@ -94,6 +105,7 @@ function Nav() {
             About
           </a>
           <div
+            className="nav-caret"
             onMouseEnter={() => setOpenMenu("origins")}
             style={{
               display: "flex",
@@ -116,7 +128,7 @@ function Nav() {
           <a href="#contact" style={navLinkStyle}>
             Contact
           </a>
-          <a href="#contact" style={enquireStyle}>
+          <a href="#contact" className="btn-gold" style={enquireStyle}>
             Enquire Now
           </a>
         </div>
@@ -183,6 +195,7 @@ function Nav() {
               background: "#FBF8F1",
               boxShadow: "0 24px 50px rgba(20,38,25,0.18)",
               borderTop: "2px solid #C9A24B",
+              animation: "fadeIn .2s ease both",
             }}
           >
             <div
@@ -343,6 +356,7 @@ function Nav() {
               background: "#FBF8F1",
               boxShadow: "0 24px 50px rgba(20,38,25,0.18)",
               borderTop: "2px solid #C9A24B",
+              animation: "fadeIn .2s ease both",
             }}
           >
             <div style={{ maxWidth: 1280, margin: "0 auto", padding: "36px 44px" }}>
@@ -407,6 +421,7 @@ function Nav() {
             flexDirection: "column",
             padding: "18px 24px 28px",
             gap: 4,
+            animation: "fadeIn .2s ease both",
           }}
         >
           {[
@@ -433,6 +448,7 @@ function Nav() {
           ))}
           <a
             href="#contact"
+            className="btn-gold"
             onClick={() => setMobileOpen(false)}
             style={{ ...enquireStyle, textAlign: "center", marginTop: 14 }}
           >

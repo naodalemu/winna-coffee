@@ -1,10 +1,18 @@
-import { certifications } from "../data/content";
+import type { CSSProperties } from "react";
+import { certifications, type Certification } from "../data/content";
+import { useReveal } from "../hooks/useReveal";
 
 function Certifications() {
+  const intro = useReveal<HTMLDivElement>();
+
   return (
     <div id="certifications" style={{ background: "#14261A", padding: "110px 44px" }}>
       <div style={{ maxWidth: 1180, margin: "0 auto" }}>
-        <div style={{ textAlign: "center", maxWidth: 660, margin: "0 auto 56px" }}>
+        <div
+          ref={intro.ref}
+          className={`reveal${intro.visible ? " is-visible" : ""}`}
+          style={{ textAlign: "center", maxWidth: 660, margin: "0 auto 56px" }}
+        >
           <div
             style={{
               fontSize: 12,
@@ -36,23 +44,7 @@ function Certifications() {
         </div>
         <div className="grid-4-eq" style={{ gap: 16 }}>
           {certifications.map((c, i) => (
-            <div
-              key={`${c.label}-${i}`}
-              style={{
-                border: "1px solid rgba(201,162,75,0.28)",
-                borderRadius: 4,
-                padding: "26px 20px",
-                textAlign: "center",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                minHeight: 96,
-              }}
-            >
-              <span style={{ fontSize: 14, fontWeight: 600, letterSpacing: 0.5, color: c.color, lineHeight: 1.4 }}>
-                {c.label}
-              </span>
-            </div>
+            <CertBadge key={`${c.label}-${i}`} c={c} index={i} />
           ))}
         </div>
         <div
@@ -69,6 +61,32 @@ function Certifications() {
           </span>
         </div>
       </div>
+    </div>
+  );
+}
+
+function CertBadge({ c, index }: { c: Certification; index: number }) {
+  const badge = useReveal<HTMLDivElement>();
+
+  return (
+    <div
+      ref={badge.ref}
+      className={`reveal${badge.visible ? " is-visible" : ""}`}
+      style={{
+        "--reveal-delay": `${index * 70}ms`,
+        border: "1px solid rgba(201,162,75,0.28)",
+        borderRadius: 4,
+        padding: "26px 20px",
+        textAlign: "center",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: 96,
+      } as CSSProperties}
+    >
+      <span style={{ fontSize: 14, fontWeight: 600, letterSpacing: 0.5, color: c.color, lineHeight: 1.4 }}>
+        {c.label}
+      </span>
     </div>
   );
 }

@@ -7,6 +7,7 @@ interface ImageWithCreditProps extends Partial<Credited> {
   style?: CSSProperties;
   imgStyle?: CSSProperties;
   noLazy?: boolean;
+  className?: string;
 }
 
 function ImageWithCredit({
@@ -17,9 +18,10 @@ function ImageWithCredit({
   style,
   imgStyle,
   noLazy = false,
+  className,
 }: ImageWithCreditProps) {
   return (
-    <div style={{ position: "relative", width: "100%", height: "100%", ...style }}>
+    <div className={className} style={{ position: "relative", width: "100%", height: "100%", ...style }}>
       <img
         src={img}
         alt={alt}

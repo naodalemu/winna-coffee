@@ -2,6 +2,7 @@ function WhatsAppFloat() {
   return (
     <a
       href="#contact"
+      className="btn-whatsapp whatsapp-float"
       style={{
         position: "fixed",
         right: 26,
