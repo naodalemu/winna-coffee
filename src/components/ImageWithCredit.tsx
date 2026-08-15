@@ -6,6 +6,7 @@ interface ImageWithCreditProps extends Partial<Credited> {
   alt?: string;
   style?: CSSProperties;
   imgStyle?: CSSProperties;
+  noLazy?: boolean;
 }
 
 function ImageWithCredit({
