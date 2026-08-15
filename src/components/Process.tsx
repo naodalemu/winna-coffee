@@ -27,7 +27,7 @@ function Process() {
               margin: 0,
             }}
           >
-            From farm to cup
+            From farm to you
           </h2>
         </div>
         <div>

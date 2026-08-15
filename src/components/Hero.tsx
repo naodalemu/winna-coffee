@@ -5,7 +5,7 @@ function Hero() {
   return (
     <div id="top" style={{ position: "relative", height: 660, overflow: "hidden" }}>
       <div style={{ position: "absolute", inset: 0 }}>
-        <ImageWithCredit {...heroImage} alt="Nibo Sendeka farm highlands" />
+        <ImageWithCredit {...heroImage} alt="Nibo Sendeka farm highlands" noLazy={true} />
       </div>
       <div
         style={{
@@ -71,7 +71,7 @@ function Hero() {
             animation: "fadeUp 1s ease .2s both",
           }}
         >
-          Ethiopia's finest beans to the world — high-quality organic and specialty coffee, grown
+          Ethiopia's finest beans to the world - high-quality organic and specialty coffee, grown
           and processed on our own Nibo Sendeka farm in Southwest Ethiopia.
         </p>
         <div

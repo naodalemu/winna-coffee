@@ -28,7 +28,7 @@ function Footer() {
               Ethiopia's Finest Organic Coffee
             </div>
             <p style={{ fontSize: 14, lineHeight: 1.7, color: "#8FA093", margin: "0 0 20px", maxWidth: 320 }}>
-              Ethiopia's finest beans to the world — high-quality organic and specialty coffee
+              Ethiopia's finest beans to the world - high-quality organic and specialty coffee
               from the Nibo Sendeka farm.
             </p>
             <div style={{ display: "flex", gap: 10 }}>

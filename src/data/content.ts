@@ -1,3 +1,22 @@
+import bean1 from "../assets/bean1.jpg";
+import bean2 from "../assets/bean2.jpg";
+import bean3 from "../assets/bean3.jpg";
+import bean4 from "../assets/bean4.jpg";
+import bean5 from "../assets/bean5.jpg";
+import aboutPhoto from "../assets/about.jpg";
+import altitudePhoto from "../assets/altitude.png";
+import rainfallPhoto from "../assets/rainfall.jpg";
+import volcanicSoilPhoto from "../assets/volcanic-soil.jpg";
+import terracedPhoto from "../assets/terraced.jpg";
+import nativeShadePhoto from "../assets/nateive-shade.jpg";
+import onFarmProcessingPhoto from "../assets/on-farm-processing.jpg";
+import farmOverviewPhoto from "../assets/farm-overview.jpg";
+import locationPhoto from "../assets/location.jpg";
+import coordinatesPhoto from "../assets/coordinates.jpg";
+import growingConditionsPhoto from "../assets/growing-conditions.jpg";
+import heroPhoto from "../assets/hero.jpg";
+import agricultureThatCaresPhoto from "../assets/agriculture-that-cares.jpg";
+
 export interface Credited {
   img: string;
   credit: string;
@@ -81,10 +100,7 @@ export const statLabels: Record<keyof typeof statTargets, string> = {
   hectares: "Hectares of Coffee",
 };
 
-const KUWIID = {
-  credit: "Photo by wisnu dwi wibowo on Unsplash",
-  creditHref: "https://unsplash.com/@kuwiid",
-};
+const NO_CREDIT = { credit: "", creditHref: "" };
 
 export const varieties: Variety[] = [
   {
@@ -94,8 +110,8 @@ export const varieties: Variety[] = [
     blocks: "A1–A5",
     profile: "Balanced acidity, floral",
     slot: "v-74110",
-    img: "https://images.unsplash.com/photo-1703646618312-6eb60d6b2d1c?fm=jpg&q=60&w=3000&auto=format&fit=crop",
-    ...KUWIID,
+    img: bean1,
+    ...NO_CREDIT,
   },
   {
     name: "Variety 74158",
@@ -104,8 +120,8 @@ export const varieties: Variety[] = [
     blocks: "All blocks",
     profile: "Wine-like acidity, berry",
     slot: "v-74158",
-    img: "https://images.unsplash.com/photo-1703646618602-307718605ea7?fm=jpg&q=60&w=3000&auto=format&fit=crop",
-    ...KUWIID,
+    img: bean2,
+    ...NO_CREDIT,
   },
   {
     name: "Variety 74140",
@@ -114,8 +130,8 @@ export const varieties: Variety[] = [
     blocks: "A6–A12",
     profile: "Citrusy, tea-like body",
     slot: "v-74140",
-    img: "https://images.unsplash.com/photo-1703646618575-d2a3681a37b3?fm=jpg&q=60&w=3000&auto=format&fit=crop",
-    ...KUWIID,
+    img: bean3,
+    ...NO_CREDIT,
   },
   {
     name: "Variety 74112",
@@ -124,8 +140,8 @@ export const varieties: Variety[] = [
     blocks: "expecting data",
     profile: "expecting data",
     slot: "v-74112",
-    img: "https://images.unsplash.com/photo-1703646618158-f1842374fa68?fm=jpg&q=60&w=3000&auto=format&fit=crop",
-    ...KUWIID,
+    img: bean4,
+    ...NO_CREDIT,
   },
   {
     name: "Variety 74165",
@@ -134,8 +150,8 @@ export const varieties: Variety[] = [
     blocks: "expecting data",
     profile: "expecting data",
     slot: "v-74165",
-    img: "https://images.unsplash.com/photo-1703646618632-5eeb27fc6734?fm=jpg&q=60&w=3000&auto=format&fit=crop",
-    ...KUWIID,
+    img: bean5,
+    ...NO_CREDIT,
   },
 ];
 
@@ -145,54 +161,48 @@ export const farmFacts: FarmFact[] = [
     region: "Elevation",
     notes: "1,705–1,880 m — ideal for Arabica",
     slot: "farm-alt",
-    img: "https://images.unsplash.com/photo-1637588168506-be08391079e4?fm=jpg&q=60&w=3000&auto=format&fit=crop",
-    credit: "Photo by BDU Fellowship VLM on Unsplash",
-    creditHref: "https://unsplash.com/@bdu_fellowship_vlm",
+    img: altitudePhoto,
+    ...NO_CREDIT,
   },
   {
     name: "Rainfall",
     region: "Climate",
     notes: "1,800–2,200 mm annually — consistent moisture",
     slot: "farm-rain",
-    img: "https://images.unsplash.com/photo-1490100667990-4fced8021649?fm=jpg&q=60&w=3000&auto=format&fit=crop",
-    credit: "Photo by Tobias Tullius on Unsplash",
-    creditHref: "https://unsplash.com/@tobiastu",
+    img: rainfallPhoto,
+    ...NO_CREDIT,
   },
   {
     name: "Volcanic Soil",
     region: "Terroir",
     notes: "pH 5.1–5.4, high organic content",
     slot: "farm-soil",
-    img: "https://images.unsplash.com/photo-1708014750399-c0b86e16aea5?fm=jpg&q=60&w=3000&auto=format&fit=crop",
-    credit: "Photo by Juan Aguirre on Unsplash",
-    creditHref: "https://unsplash.com/@juand0406",
+    img: volcanicSoilPhoto,
+    ...NO_CREDIT,
   },
   {
     name: "Terraced Terrain",
     region: "Conservation",
     notes: "Contour planting on slopes up to 26% for soil conservation",
     slot: "farm-terrain",
-    img: "https://images.unsplash.com/photo-1560198927-b31ef30c5867?fm=jpg&q=60&w=3000&auto=format&fit=crop",
-    credit: "Photo by Ivan Bandura on Unsplash",
-    creditHref: "https://unsplash.com/@unstable_affliction",
+    img: terracedPhoto,
+    ...NO_CREDIT,
   },
   {
     name: "Native Shade",
     region: "Biodiversity",
     notes: "Albizzia, Milletia & Acacia shade trees",
     slot: "farm-shade",
-    img: "https://plus.unsplash.com/premium_photo-1669613233557-1676c121fe73?fm=jpg&q=60&w=3000&auto=format&fit=crop",
-    credit: "Photo by Ales Krivec on Unsplash",
-    creditHref: "https://unsplash.com/@aleskrivec",
+    img: nativeShadePhoto,
+    ...NO_CREDIT,
   },
   {
     name: "On-Farm Processing",
     region: "Facilities",
     notes: "Wet and dry processing on site",
     slot: "farm-proc",
-    img: "https://images.unsplash.com/photo-1629008642899-178df6fc5f2f?fm=jpg&q=60&w=3000&auto=format&fit=crop",
-    credit: "Photo by Nguyen Tong Hai Van on Unsplash",
-    creditHref: "https://unsplash.com/@ngtghaivan",
+    img: onFarmProcessingPhoto,
+    ...NO_CREDIT,
   },
 ];
 
@@ -201,9 +211,8 @@ export const farmProfile: FarmProfileItem[] = [
     name: "Farm Overview",
     desc: "Total area, planted coffee and block structure.",
     slot: "fp-overview",
-    img: "https://images.unsplash.com/photo-1559556064-4161b6be179b?fm=jpg&q=60&w=3000&auto=format&fit=crop",
-    credit: "Photo by Reiseuhu on Unsplash",
-    creditHref: "https://unsplash.com/@reiseuhu",
+    img: farmOverviewPhoto,
+    ...NO_CREDIT,
     spec: [
       { k: "Total area", v: "101.54 ha" },
       { k: "Coffee blocks", v: "97.36 ha" },
@@ -215,9 +224,8 @@ export const farmProfile: FarmProfileItem[] = [
     name: "Location",
     desc: "Keja Kebele, Masha District, Sheka Zone, SWEPRS, Ethiopia.",
     slot: "fp-location",
-    img: "https://images.unsplash.com/photo-1588349500046-854848044870?fm=jpg&q=60&w=3000&auto=format&fit=crop",
-    credit: "Photo by Taylor Flowe on Unsplash",
-    creditHref: "https://unsplash.com/@taypaigey",
+    img: locationPhoto,
+    ...NO_CREDIT,
     spec: [
       { k: "Zone", v: "Sheka" },
       { k: "District", v: "Masha" },
@@ -229,9 +237,8 @@ export const farmProfile: FarmProfileItem[] = [
     name: "Coordinates",
     desc: "Precise mapped farm boundary.",
     slot: "fp-coords",
-    img: "https://images.unsplash.com/photo-1516822277566-bb38424a2b77?fm=jpg&q=60&w=3000&auto=format&fit=crop",
-    credit: "Photo by jean wimmerlin on Unsplash",
-    creditHref: "https://unsplash.com/@jwimmerli",
+    img: coordinatesPhoto,
+    ...NO_CREDIT,
     spec: [
       { k: "Latitude", v: "7°50'57.87\"N – 7°51'43.66\"N" },
       { k: "Longitude", v: "35°27'48.87\"E – 35°27'54.58\"E" },
@@ -239,11 +246,10 @@ export const farmProfile: FarmProfileItem[] = [
   },
   {
     name: "Growing Conditions",
-    desc: "The natural conditions behind the cup.",
+    desc: "The natural conditions behind every bean.",
     slot: "fp-cond",
-    img: "https://images.unsplash.com/photo-1586095516671-d085ff58cdd4?fm=jpg&q=60&w=3000&auto=format&fit=crop",
-    credit: "Photo by Eduardo Gorghetto on Unsplash",
-    creditHref: "https://unsplash.com/@egorghetto",
+    img: growingConditionsPhoto,
+    ...NO_CREDIT,
     spec: [
       { k: "Altitude", v: "1,705–1,880 m" },
       { k: "Rainfall", v: "1,800–2,200 mm" },
@@ -327,18 +333,16 @@ export const values: ValueItem[] = [
 export const socials = ["f", "x", "ig", "in"];
 
 export const heroImage: Credited = {
-  img: "https://images.unsplash.com/photo-1633437805600-2c58bf56663c?fm=jpg&q=60&w=3000&auto=format&fit=crop",
-  credit: "Photo by Dhan Sugui on Unsplash",
-  creditHref: "https://unsplash.com/@dhansugui",
+  img: heroPhoto,
+  ...NO_CREDIT,
 };
 
 export const aboutImage: Credited = {
-  img: "https://images.unsplash.com/photo-1703646618605-1e9e7b728bc0?fm=jpg&q=60&w=3000&auto=format&fit=crop",
-  ...KUWIID,
+  img: aboutPhoto,
+  ...NO_CREDIT,
 };
 
 export const impactImage: Credited = {
-  img: "https://images.unsplash.com/photo-1532415914860-f6ee7c74c9fb?fm=jpg&q=60&w=3000&auto=format&fit=crop",
-  credit: "Photo by rawkkim on Unsplash",
-  creditHref: "https://unsplash.com/@rawkkim",
+  img: agricultureThatCaresPhoto,
+  ...NO_CREDIT,
 };
