@@ -1,0 +1,77 @@
+.impact {
+  position: relative;
+  overflow: hidden;
+  color: var(--on-dark);
+  background: var(--espresso);
+  padding: clamp(120px, 16vw, 220px) 0 clamp(64px, 8vw, 100px);
+}
+
+.impact-media {
+  position: absolute;
+  inset: 0;
+  background: var(--espresso);
+}
+
+.impact-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(27, 19, 15, 0.55) 0%, rgba(27, 19, 15, 0.7) 55%, rgba(27, 19, 15, 0.92) 100%);
+}
+
+.impact-inner {
+  position: relative;
+}
+
+.impact-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  text-align: center;
+  margin-bottom: clamp(100px, 14vw, 200px);
+}
+
+.impact-lede {
+  max-width: 420px;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(244, 239, 230, 0.8);
+}
+
+.impact-values {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.impact-value {
+  padding-top: 20px;
+  border-top: 1px solid rgba(244, 239, 230, 0.35);
+}
+
+.impact-value .mono {
+  color: rgba(244, 239, 230, 0.7);
+}
+
+.impact-value h3 {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 22px;
+  letter-spacing: -0.025em;
+  margin: 22px 0 10px;
+}
+
+.impact-value p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(244, 239, 230, 0.75);
+  max-width: 320px;
+}
+
+@media (max-width: 760px) {
+  .impact-values {
+    grid-template-columns: 1fr;
+  }
+}

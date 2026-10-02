@@ -1,230 +1,98 @@
-import type { CSSProperties } from "react";
-import { contactEmails, contactPhone } from "../data/content";
-import { useReveal } from "../hooks/useReveal";
+import { contactEmails, contactPhone, officeAddress, varieties, whatsappHref } from "../data/content";
+import { Arrow, Reveal, Tag } from "./ui";
+import "./Contact.css";
 
 function Contact() {
-  const left = useReveal<HTMLDivElement>();
-  const form = useReveal<HTMLDivElement>();
-
   return (
-    <div id="contact" style={{ background: "#14261A", padding: "120px 44px" }}>
-      <div
-        className="grid-2"
-        style={{
-          maxWidth: 1180,
-          margin: "0 auto",
-          gap: 70,
-        }}
-      >
-        <div ref={left.ref} className={`reveal${left.visible ? " is-visible" : ""}`}>
-          <div
-            style={{
-              fontSize: 12,
-              letterSpacing: 3,
-              textTransform: "uppercase",
-              color: "#C9A24B",
-              fontWeight: 700,
-              marginBottom: 18,
-            }}
-          >
-            Request a Quote
-          </div>
-          <h2
-            style={{
-              fontFamily: "'Cormorant Garamond',serif",
-              fontWeight: 600,
-              fontSize: 44,
-              lineHeight: 1.12,
-              color: "#FBF8F1",
-              margin: "0 0 18px",
-            }}
-          >
-            Tell us your grade, volume & destination.
-          </h2>
-          <p style={{ fontSize: 16, lineHeight: 1.8, color: "#B9C7BC", margin: "0 0 40px" }}>
+    <section id="contact" className="contact">
+      <div className="container contact-inner">
+        <div className="contact-left">
+          <Tag index="S.12" label="Request a quote" />
+          <Reveal as="h2" className="display-l contact-title">
+            Tell us your grade, volume <em>&amp; destination.</em>
+          </Reveal>
+          <Reveal as="p" className="lede contact-lede" delay={100}>
             Share the specifics and our team will respond with pricing, samples and lead times.
-          </p>
-          <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
-            <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
-              <div
-                style={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: 3,
-                  background: "rgba(201,162,75,0.15)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: "#C9A24B",
-                  fontWeight: 700,
-                }}
-              >
-                ✆
-              </div>
-              <div>
-                <div style={{ fontSize: 12, color: "#8FA093", textTransform: "uppercase", letterSpacing: 1 }}>
-                  Phone
-                </div>
-                <div style={{ fontSize: 15, color: "#EAE3D4" }}>{contactPhone}</div>
-              </div>
+          </Reveal>
+
+          <Reveal as="dl" className="contact-details" delay={180}>
+            <div>
+              <dt className="mono">Phone</dt>
+              <dd>
+                <a href={`tel:${contactPhone.replace(/\s/g, "")}`}>{contactPhone}</a>
+              </dd>
             </div>
-            <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
-              <div
-                style={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: 3,
-                  background: "rgba(201,162,75,0.15)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: "#C9A24B",
-                  fontWeight: 700,
-                }}
-              >
-                @
-              </div>
-              <div>
-                <div style={{ fontSize: 12, color: "#8FA093", textTransform: "uppercase", letterSpacing: 1 }}>
-                  Email
-                </div>
+            <div>
+              <dt className="mono">Email</dt>
+              <dd>
                 {contactEmails.map((email) => (
-                  <div key={email} style={{ fontSize: 15, color: "#EAE3D4" }}>
+                  <a key={email} href={`mailto:${email}`}>
                     {email}
-                  </div>
+                  </a>
                 ))}
-              </div>
+              </dd>
             </div>
-            <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
-              <div
-                style={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: 3,
-                  background: "rgba(201,162,75,0.15)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: "#C9A24B",
-                  fontWeight: 700,
-                }}
-              >
-                ⌖
-              </div>
-              <div>
-                <div style={{ fontSize: 12, color: "#8FA093", textTransform: "uppercase", letterSpacing: 1 }}>
-                  Office
-                </div>
-                <div style={{ fontSize: 15, color: "#EAE3D4" }}>
-                  Bole, Welelay Building, 4th Floor, Addis Ababa
-                </div>
-              </div>
+            <div>
+              <dt className="mono">Office</dt>
+              <dd>{officeAddress.join(", ")}</dd>
             </div>
-            <a
-              href="#contact"
-              className="btn-whatsapp"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 10,
-                background: "#1FA855",
-                color: "#FBF8F1",
-                fontWeight: 700,
-                fontSize: 14,
-                padding: "14px 24px",
-                borderRadius: 3,
-                width: "fit-content",
-                marginTop: 6,
-              }}
-            >
-              WhatsApp Quick Order →
-            </a>
-          </div>
+          </Reveal>
+
+          <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="link-line label contact-wa">
+            WhatsApp quick order <Arrow />
+          </a>
         </div>
-        <div
-          ref={form.ref}
-          className={`reveal${form.visible ? " is-visible" : ""}`}
-          style={{ "--reveal-delay": "100ms", background: "#FBF8F1", borderRadius: 6, padding: "38px 36px" } as CSSProperties}
-        >
-          <div className="grid-2-form" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
-            <div>
-              <label style={labelStyle}>Name</label>
-              <input placeholder="Your name" style={inputStyle} />
-            </div>
-            <div>
-              <label style={labelStyle}>Email</label>
-              <input placeholder="you@company.com" style={inputStyle} />
-            </div>
+
+        <Reveal as="form" className="contact-form" delay={120}>
+          <div className="field-row">
+            <Field label="Name" name="name" placeholder="Your name" />
+            <Field label="Email" name="email" type="email" placeholder="you@company.com" />
           </div>
-          <div className="grid-2-form" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
-            <div>
-              <label style={labelStyle}>Variety</label>
-              <select style={inputStyle}>
-                <option>74110</option>
-                <option>74158</option>
-                <option>74140</option>
-                <option>74112</option>
-                <option>74165</option>
+          <div className="field-row">
+            <label className="field">
+              <span className="mono">Variety</span>
+              <select name="variety" defaultValue="">
+                <option value="" disabled>
+                  Select a variety
+                </option>
+                {varieties.map((v) => (
+                  <option key={v.slot}>{v.name.replace(/^Variety\s+/i, "")}</option>
+                ))}
               </select>
-            </div>
-            <div>
-              <label style={labelStyle}>Volume</label>
-              <input placeholder="e.g. 2 containers" style={inputStyle} />
-            </div>
+            </label>
+            <Field label="Volume" name="volume" placeholder="e.g. 2 containers" />
           </div>
-          <div style={{ marginBottom: 16 }}>
-            <label style={labelStyle}>Destination</label>
-            <input placeholder="Port / country" style={inputStyle} />
-          </div>
-          <div style={{ marginBottom: 22 }}>
-            <label style={labelStyle}>Details</label>
-            <textarea
-              rows={3}
-              placeholder="Grade, processing, timeline…"
-              style={{ ...inputStyle, resize: "vertical" }}
-            />
-          </div>
-          <button
-            className="btn-gold"
-            style={{
-              width: "100%",
-              background: "#C9A24B",
-              color: "#1B2A1E",
-              border: "none",
-              fontSize: 15,
-              fontWeight: 700,
-              letterSpacing: 0.5,
-              padding: 16,
-              borderRadius: 3,
-              cursor: "pointer",
-            }}
-          >
-            Send Enquiry
+          <Field label="Destination" name="destination" placeholder="Port / country" />
+          <label className="field">
+            <span className="mono">Details</span>
+            <textarea name="details" rows={3} placeholder="Grade, processing, timeline…" />
+          </label>
+          <button type="button" className="btn btn-solid label contact-submit">
+            Send enquiry <Arrow />
           </button>
-        </div>
+        </Reveal>
       </div>
-    </div>
+    </section>
   );
 }
 
-const labelStyle = {
-  display: "block",
-  fontSize: 12,
-  letterSpacing: 0.5,
-  color: "#8A7A66",
-  textTransform: "uppercase" as const,
-  marginBottom: 7,
-  fontWeight: 600,
-};
-
-const inputStyle = {
-  width: "100%",
-  padding: "13px 14px",
-  border: "1px solid #DDD3BF",
-  borderRadius: 3,
-  background: "#fff",
-  fontSize: 14,
-  color: "#2A1C11",
-};
+function Field({
+  label,
+  name,
+  placeholder,
+  type = "text",
+}: {
+  label: string;
+  name: string;
+  placeholder: string;
+  type?: string;
+}) {
+  return (
+    <label className="field">
+      <span className="mono">{label}</span>
+      <input name={name} type={type} placeholder={placeholder} />
+    </label>
+  );
+}
 
 export default Contact;

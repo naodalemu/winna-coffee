@@ -15,28 +15,32 @@ import FAQ from "./components/FAQ";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import WhatsAppFloat from "./components/WhatsAppFloat";
+import ScrollBar from "./components/ScrollBar";
 
 function App() {
   return (
-    <div style={{ background: "#F6F1E7" }}>
+    <>
       <Nav />
-      <Hero />
-      <TrustStrip />
-      <Stats />
-      <About />
-      <CoffeeVarieties />
-      <FarmFacts />
-      <FarmProfile />
-      <Process />
-      <Certifications />
-      <Testimonials />
-      <WhyChoose />
-      <Impact />
-      <FAQ />
-      <Contact />
+      <main>
+        <Hero />
+        <TrustStrip />
+        <About />
+        <Stats />
+        <CoffeeVarieties />
+        <FarmFacts />
+        <FarmProfile />
+        <Process />
+        <WhyChoose />
+        <Impact />
+        <Certifications />
+        <Testimonials />
+        <FAQ />
+        <Contact />
+      </main>
       <Footer />
       <WhatsAppFloat />
-    </div>
+      <ScrollBar />
+    </>
   );
 }
 

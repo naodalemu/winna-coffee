@@ -1,0 +1,142 @@
+.hero {
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  min-height: 620px;
+  overflow: hidden;
+  color: var(--on-dark);
+  background: var(--espresso);
+}
+
+.hero-media {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* Settles in on load, then drifts with scroll (--p from useParallax) */
+  transform: translate3d(0, calc(var(--p, 0) * 4%), 0) scale(1.1);
+  animation: heroSettle 2.4s var(--ease) backwards;
+}
+
+@keyframes heroSettle {
+  from {
+    transform: scale(1.18);
+    opacity: 0.4;
+  }
+}
+
+.hero-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(27, 19, 15, 0.55) 0%, rgba(27, 19, 15, 0) 26%),
+    linear-gradient(0deg, rgba(27, 19, 15, 0.82) 0%, rgba(27, 19, 15, 0.25) 55%, rgba(27, 19, 15, 0) 75%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: clamp(36px, 6vh, 64px);
+}
+
+.hero-meta {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+  opacity: 0.85;
+  animation: fadeIn 1.2s ease 0.2s both;
+}
+
+.hero-title {
+  max-width: 11ch;
+}
+
+.hero-title em {
+  font-style: italic;
+}
+
+.hero-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 44px;
+  padding-top: 26px;
+  border-top: 1px solid var(--line-dark);
+  animation: fadeIn 1.4s ease 0.9s both;
+}
+
+.hero-lede {
+  max-width: 430px;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(244, 239, 230, 0.82);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hero-actions .btn {
+  font-size: 11px;
+}
+
+.hero-scroll {
+  position: absolute;
+  right: var(--gutter);
+  top: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  writing-mode: vertical-rl;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.hero-scroll:hover {
+  opacity: 1;
+}
+
+.hero-scroll .arrow {
+  writing-mode: horizontal-tb;
+  animation: nudge 2s ease-in-out infinite;
+}
+
+@keyframes nudge {
+  50% {
+    translate: 0 6px;
+  }
+}
+
+@media (max-width: 860px) {
+  .hero-scroll {
+    display: none;
+  }
+  .hero-meta {
+    gap: 6px;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-media img,
+  .hero-scroll .arrow {
+    animation: none;
+    transform: none;
+  }
+}

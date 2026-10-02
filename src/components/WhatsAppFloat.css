@@ -1,0 +1,60 @@
+.float {
+  position: fixed;
+  right: var(--gutter);
+  bottom: 28px;
+  z-index: 150;
+  display: flex;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.6s var(--ease);
+}
+
+.float.is-shown {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.float-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  height: 46px;
+  padding: 0 18px;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 11px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.float-pill:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.float-wa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  background: var(--ink);
+  color: var(--paper);
+  transition: background 0.3s ease;
+}
+
+.float-wa:hover {
+  background: #1fa855;
+}
+
+@media (max-width: 560px) {
+  .float {
+    bottom: 16px;
+  }
+  .float-pill {
+    display: none;
+  }
+}

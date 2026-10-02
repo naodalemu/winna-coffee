@@ -1,0 +1,95 @@
+.profile {
+  background: var(--paper-2);
+  padding: clamp(96px, 12vw, 160px) 0;
+}
+
+.profile-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: clamp(56px, 7vw, 96px);
+}
+
+.profile-title {
+  margin-top: 28px;
+  max-width: 12ch;
+}
+
+.profile-lede {
+  max-width: 360px;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 24px;
+}
+
+.profile-img {
+  aspect-ratio: 4 / 3;
+  margin-bottom: 22px;
+}
+
+.profile-name {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 22px;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  margin: 0 0 8px;
+}
+
+.profile-desc {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0 0 18px;
+  min-height: 3.1em;
+}
+
+.profile-spec {
+  margin: 0;
+}
+
+.profile-spec > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 8px 0;
+  border-top: 1px solid var(--line);
+}
+
+.profile-spec dt {
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.profile-spec dd {
+  margin: 0;
+  font-size: 13px;
+  text-align: right;
+}
+
+.profile-cta {
+  margin-top: clamp(48px, 6vw, 80px);
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 1080px) {
+  .profile-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+  .profile-desc {
+    min-height: 0;
+  }
+}

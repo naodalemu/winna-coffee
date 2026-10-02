@@ -1,0 +1,64 @@
+/* Hide the native page scrollbar; ScrollBar draws its own overlay thumb. */
+html {
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+/* Thin hit area along the right edge — hovering it brings the thumb back */
+.scrollbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 300;
+  width: 14px;
+}
+
+.scrollbar-thumb {
+  position: absolute;
+  top: 0;
+  right: 3px;
+  width: 5px;
+  border-radius: 5px;
+  background: var(--ink);
+  opacity: 0;
+  cursor: grab;
+  transition: opacity 0.5s ease, width 0.25s ease, right 0.25s ease, background 0.3s ease;
+  will-change: transform;
+  touch-action: none;
+}
+
+/* Switched by ScrollBar.tsx while the thumb sits over a dark section */
+.scrollbar-thumb.is-on-dark {
+  background: var(--on-dark);
+}
+
+.scrollbar.is-shown .scrollbar-thumb {
+  opacity: 0.85;
+  transition-duration: 0.15s, 0.25s, 0.25s, 0.3s;
+}
+
+.scrollbar:hover .scrollbar-thumb,
+.scrollbar.is-dragging .scrollbar-thumb {
+  width: 7px;
+  right: 3px;
+  opacity: 1;
+}
+
+.scrollbar.is-dragging .scrollbar-thumb {
+  cursor: grabbing;
+}
+
+/* Touch devices already get transient overlay scrollbars; no hit area needed */
+@media (pointer: coarse) {
+  .scrollbar {
+    pointer-events: none;
+  }
+  .scrollbar-thumb {
+    width: 3px;
+    right: 2px;
+  }
+}

@@ -1,5 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { statLabels, statTargets } from "../data/content";
+import { Reveal, Tag } from "./ui";
+import "./Stats.css";
 
 type Counts = typeof statTargets;
 
@@ -9,7 +11,7 @@ const fmt = (n: number) => n.toLocaleString("en-US");
 
 function Stats() {
   const [counts, setCounts] = useState<Counts>(ZERO_COUNTS);
-  const animatedRef = useRef(false);
+  const [started, setStarted] = useState(false);
   const nodeRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -17,11 +19,11 @@ function Stats() {
     if (!el) return;
 
     const runCount = () => {
-      const dur = 1700;
+      const dur = 1900;
       const start = performance.now();
       const tick = (now: number) => {
         const t = Math.min(1, (now - start) / dur);
-        const eased = 1 - Math.pow(1 - t, 3);
+        const eased = 1 - Math.pow(1 - t, 4);
         const next = {} as Counts;
         (Object.keys(statTargets) as (keyof Counts)[]).forEach((k) => {
           next[k] = Math.round(statTargets[k] * eased);
@@ -34,8 +36,8 @@ function Stats() {
 
     const obs = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting && !animatedRef.current) {
-          animatedRef.current = true;
+        if (entries[0].isIntersecting) {
+          setStarted(true);
           runCount();
           obs.disconnect();
         }
@@ -55,51 +57,26 @@ function Stats() {
   ];
 
   return (
-    <div ref={nodeRef} style={{ background: "#F6F1E7", padding: "88px 44px" }}>
-      <div
-        className="grid-5"
-        style={{
-          maxWidth: 1280,
-          margin: "0 auto",
-          gap: 20,
-        }}
-      >
-        {statItems.map((s) => (
-          <div
-            key={s.label}
-            style={{
-              textAlign: "center",
-              padding: "0 8px",
-              borderRight: "1px solid #E2D9C6",
-            }}
-          >
-            <div
-              style={{
-                fontFamily: "'Cormorant Garamond',serif",
-                fontWeight: 600,
-                fontSize: 52,
-                color: "#1E3A2B",
-                lineHeight: 1,
-              }}
-            >
-              {s.display}
+    <section className="stats">
+      <div className="container">
+        <div className="stats-head">
+          <Tag index="S.02" label="By the numbers" />
+          <Reveal as="p" className="stats-copy">
+            Altitude of 1,705–1,880 m, 1,800–2,200 mm of rain a year and rich volcanic soil -
+            101.54 hectares in total, 97.36 of them planted across 12 mapped blocks.
+          </Reveal>
+        </div>
+        <div ref={nodeRef} className={`stats-grid${started ? " is-visible" : ""}`}>
+          {statItems.map((s, i) => (
+            <div key={s.label} className="stat" style={{ "--i": i } as CSSProperties}>
+              <span className="mono stat-index">{String(i + 1).padStart(2, "0")}</span>
+              <span className="stat-num">{s.display}</span>
+              <span className="mono stat-label">{s.label}</span>
             </div>
-            <div
-              style={{
-                fontSize: 13,
-                letterSpacing: 1,
-                textTransform: "uppercase",
-                color: "#8A7A66",
-                fontWeight: 600,
-                marginTop: 12,
-              }}
-            >
-              {s.label}
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
 

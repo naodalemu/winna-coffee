@@ -1,63 +1,51 @@
-import { useReveal } from "../hooks/useReveal";
+import { useState } from "react";
+import { faqs } from "../data/content";
+import { Reveal, Tag } from "./ui";
+import "./FAQ.css";
 
 function FAQ() {
-  const intro = useReveal<HTMLDivElement>();
+  const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <div style={{ background: "#FBF8F1", padding: "120px 44px" }}>
-      <div style={{ maxWidth: 880, margin: "0 auto" }}>
-        <div
-          ref={intro.ref}
-          className={`reveal${intro.visible ? " is-visible" : ""}`}
-          style={{ textAlign: "center", marginBottom: 44 }}
-        >
-          <div
-            style={{
-              fontSize: 12,
-              letterSpacing: 3,
-              textTransform: "uppercase",
-              color: "#C9A24B",
-              fontWeight: 700,
-              marginBottom: 18,
-            }}
-          >
-            FAQ
-          </div>
-          <h2
-            style={{
-              fontFamily: "'Cormorant Garamond',serif",
-              fontWeight: 600,
-              fontSize: 44,
-              color: "#2A1C11",
-              margin: 0,
-            }}
-          >
-            Questions buyers ask
-          </h2>
+    <section className="faq">
+      <div className="container faq-inner">
+        <div className="faq-head">
+          <Tag index="S.11" label="FAQ" />
+          <Reveal as="h2" className="display-m">
+            Questions <em>buyers ask</em>
+          </Reveal>
         </div>
-        <div
-          style={{
-            border: "1px dashed #CBBE9F",
-            borderRadius: 8,
-            background: "#F6F1E7",
-            padding: "64px 40px",
-            textAlign: "center",
-          }}
-        >
-          <p
-            style={{
-              fontFamily: "'Cormorant Garamond',serif",
-              fontStyle: "italic",
-              fontSize: 22,
-              color: "#8A7A66",
-              margin: 0,
-            }}
-          >
-            Frequently asked questions — expecting data
-          </p>
+
+        <div className="faq-list">
+          {faqs.length > 0 ? (
+            faqs.map((f, i) => {
+              const isOpen = open === i;
+              return (
+                <div key={f.q} className={`faq-item${isOpen ? " is-open" : ""}`}>
+                  <button
+                    type="button"
+                    aria-expanded={isOpen}
+                    onClick={() => setOpen(isOpen ? null : i)}
+                  >
+                    <span>{f.q}</span>
+                    <span className="faq-icon" aria-hidden="true" />
+                  </button>
+                  <div className="faq-answer">
+                    <div>
+                      <p>{f.a}</p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })
+          ) : (
+            <div className="faq-item faq-empty">
+              <span className="mono">Frequently asked questions - expecting data</span>
+            </div>
+          )}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

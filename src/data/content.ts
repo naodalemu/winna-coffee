@@ -159,7 +159,7 @@ export const farmFacts: FarmFact[] = [
   {
     name: "Altitude",
     region: "Elevation",
-    notes: "1,705–1,880 m — ideal for Arabica",
+    notes: "1,705–1,880 m - ideal for Arabica",
     slot: "farm-alt",
     img: altitudePhoto,
     ...NO_CREDIT,
@@ -167,7 +167,7 @@ export const farmFacts: FarmFact[] = [
   {
     name: "Rainfall",
     region: "Climate",
-    notes: "1,800–2,200 mm annually — consistent moisture",
+    notes: "1,800–2,200 mm annually - consistent moisture",
     slot: "farm-rain",
     img: rainfallPhoto,
     ...NO_CREDIT,
@@ -278,12 +278,12 @@ export const process: ProcessStep[] = [
   {
     n: "04",
     title: "Sorting & Grading",
-    desc: "Grading standards and quality specifications — expecting data.",
+    desc: "Grading standards and quality specifications - expecting data.",
   },
   {
     n: "05",
     title: "Direct Export",
-    desc: "Full farm-to-export control ensures quality and supports local communities. Export terms and destinations — expecting data.",
+    desc: "Full farm-to-export control ensures quality and supports local communities. Export terms and destinations - expecting data.",
   },
 ];
 
@@ -330,7 +330,48 @@ export const values: ValueItem[] = [
   },
 ];
 
-export const socials = ["f", "x", "ig", "in"];
+export interface Social {
+  label: string;
+  href: string;
+}
+
+// Add the profile URLs when available; entries without an href render as plain text.
+export const socials: Social[] = [
+  { label: "Instagram", href: "" },
+  { label: "Facebook", href: "" },
+  { label: "LinkedIn", href: "" },
+  { label: "X / Twitter", href: "" },
+];
+
+export interface Testimonial {
+  quote: string;
+  name: string;
+  company: string;
+}
+
+// Expecting data - the section shows a placeholder while this is empty.
+export const testimonials: Testimonial[] = [];
+
+export interface FaqItem {
+  q: string;
+  a: string;
+}
+
+// Expecting data - the section shows a placeholder while this is empty.
+export const faqs: FaqItem[] = [];
+
+export const officeAddress = ["Bole, Welelay Building, 4th Floor", "Addis Ababa, Ethiopia"];
+export const farmCoordinates = "7°51′N · 35°27′E";
+export const whatsappHref = `https://wa.me/${contactPhone.replace(/\D/g, "")}`;
+
+export const navLinks = [
+  { href: "#about", label: "About" },
+  { href: "#coffee", label: "Varieties" },
+  { href: "#origins", label: "The Farm" },
+  { href: "#process", label: "Process" },
+  { href: "#impact", label: "Impact" },
+  { href: "#contact", label: "Contact" },
+];
 
 export const heroImage: Credited = {
   img: heroPhoto,

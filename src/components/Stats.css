@@ -1,0 +1,86 @@
+.stats {
+  background: var(--paper);
+  padding-bottom: clamp(96px, 12vw, 160px);
+}
+
+.stats-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 56px;
+}
+
+.stats-copy {
+  max-width: 440px;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.stat {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 22px 20px 0 0;
+}
+
+/* Hairline that draws left → right, staggered per column */
+.stat::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.2s var(--ease);
+  transition-delay: calc(var(--i) * 120ms);
+}
+
+.stats-grid.is-visible .stat::before {
+  transform: scaleX(1);
+}
+
+.stat-index {
+  color: var(--muted);
+}
+
+.stat-num {
+  font-family: var(--serif);
+  font-size: clamp(56px, 6.4vw, 96px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: 28px 0 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+  color: var(--ink-soft);
+  max-width: 24ch;
+}
+
+@media (max-width: 960px) {
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 48px;
+  }
+}
+
+@media (max-width: 560px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .stat:last-child {
+    grid-column: 1 / -1;
+  }
+}
