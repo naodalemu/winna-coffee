@@ -3,6 +3,8 @@ import bean2 from "../assets/bean2.jpg";
 import bean3 from "../assets/bean3.jpg";
 import bean4 from "../assets/bean4.jpg";
 import bean5 from "../assets/bean5.jpg";
+import bagFoldTop from "../assets/coffee-bean-bag/bag-foldtop.webp";
+import bagSack from "../assets/coffee-bean-bag/bag-sack.webp";
 import aboutPhoto from "../assets/about.jpg";
 import altitudePhoto from "../assets/altitude.png";
 import rainfallPhoto from "../assets/rainfall.jpg";
@@ -33,6 +35,8 @@ export interface Variety extends Credited {
   altitude: string;
   blocks: string;
   profile: string;
+  /** Transparent cut-out of the bag shown in the varieties dial. */
+  bag: string;
 }
 
 export interface FarmFact extends Credited {
@@ -110,6 +114,7 @@ export const varieties: Variety[] = [
     blocks: "A1–A5",
     profile: "Balanced acidity, floral",
     slot: "v-74110",
+    bag: bagFoldTop,
     img: bean1,
     ...NO_CREDIT,
   },
@@ -120,6 +125,7 @@ export const varieties: Variety[] = [
     blocks: "All blocks",
     profile: "Wine-like acidity, berry",
     slot: "v-74158",
+    bag: bagSack,
     img: bean2,
     ...NO_CREDIT,
   },
@@ -130,6 +136,7 @@ export const varieties: Variety[] = [
     blocks: "A6–A12",
     profile: "Citrusy, tea-like body",
     slot: "v-74140",
+    bag: bagFoldTop,
     img: bean3,
     ...NO_CREDIT,
   },
@@ -140,6 +147,7 @@ export const varieties: Variety[] = [
     blocks: "expecting data",
     profile: "expecting data",
     slot: "v-74112",
+    bag: bagSack,
     img: bean4,
     ...NO_CREDIT,
   },
@@ -150,6 +158,7 @@ export const varieties: Variety[] = [
     blocks: "expecting data",
     profile: "expecting data",
     slot: "v-74165",
+    bag: bagFoldTop,
     img: bean5,
     ...NO_CREDIT,
   },

@@ -123,16 +123,34 @@ function CoffeeVarieties() {
               ))}
             </g>
           </svg>
-          <div className="dial-photo">
+          {/* Still life on a soft spotlight: the bag, with the variety's green beans
+              resting beside it. The next bag lifts in as the previous one drifts away. */}
+          <div className="dial-stage">
+            <div className="dial-spot" />
+            <div className="dial-shadow" />
             {varieties.map((item, i) => (
               <img
                 key={item.slot}
-                src={item.img}
+                src={item.bag}
                 alt=""
                 loading="lazy"
-                className={i === active ? "is-active" : ""}
+                className={`dial-bag${i === active ? " is-active" : i < active ? " is-past" : ""}`}
               />
             ))}
+            <div className="dial-sample">
+              <div className="dial-sample-photo">
+                {varieties.map((item, i) => (
+                  <img
+                    key={item.slot}
+                    src={item.img}
+                    alt=""
+                    loading="lazy"
+                    className={i === active ? "is-active" : ""}
+                  />
+                ))}
+              </div>
+              <span className="mono dial-sample-label">Green · {code(v.name)}</span>
+            </div>
           </div>
         </div>
 
