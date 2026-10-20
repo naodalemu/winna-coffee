@@ -1,4 +1,11 @@
-import terracedPhoto from "../assets/terraced.jpg";
+// Full-bleed band: responsive AVIF (wide 2.6:1 crop for desktop, 4:3 for phones), WebP fallback
+import bandMobile640 from "../assets/footer-band/terraced-640.avif";
+import bandMobile1080 from "../assets/footer-band/terraced-1080.avif";
+import bandWide1400 from "../assets/footer-band/terraced-wide-1400.avif";
+import bandWide2000 from "../assets/footer-band/terraced-wide-2000.avif";
+import bandWide3000 from "../assets/footer-band/terraced-wide-3000.avif";
+import bandWide1400Webp from "../assets/footer-band/terraced-wide-1400.webp";
+import bandWide2000Webp from "../assets/footer-band/terraced-wide-2000.webp";
 import {
   contactEmails,
   contactPhone,
@@ -21,7 +28,7 @@ const bandLinks = [
 const footerLinks = [
   { href: "#about", label: "About us" },
   { href: "#profile", label: "Farm profile" },
-  { href: "#certifications", label: "Certifications" },
+  // { href: "#certifications", label: "Certifications" }, // hidden with the section
   { href: "#contact", label: "Request a quote" },
 ];
 
@@ -31,7 +38,27 @@ function Footer() {
   return (
     <footer className="footer">
       <div ref={band} className="footer-band media parallax">
-        <img src={terracedPhoto} alt="" loading="lazy" />
+        <picture>
+          <source
+            media="(max-width: 600px)"
+            type="image/avif"
+            srcSet={`${bandMobile640} 640w, ${bandMobile1080} 1080w`}
+            sizes="100vw"
+          />
+          <source
+            type="image/avif"
+            srcSet={`${bandWide1400} 1400w, ${bandWide2000} 2000w, ${bandWide3000} 3000w`}
+            sizes="100vw"
+          />
+          <img
+            src={bandWide2000Webp}
+            srcSet={`${bandWide1400Webp} 1400w, ${bandWide2000Webp} 2000w`}
+            sizes="100vw"
+            alt=""
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
         <nav className="footer-band-links label" aria-label="Sections">
           {bandLinks.map((l) => (
             <a key={l.href} href={l.href}>

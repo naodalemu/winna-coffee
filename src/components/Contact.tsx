@@ -7,7 +7,7 @@ function Contact() {
     <section id="contact" className="contact">
       <div className="container contact-inner">
         <div className="contact-left">
-          <Tag index="S.12" label="Request a quote" />
+          <Tag index="S.09" label="Request a quote" />
           <Reveal as="h2" className="display-l contact-title">
             Tell us your grade, volume <em>&amp; destination.</em>
           </Reveal>

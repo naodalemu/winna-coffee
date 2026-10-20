@@ -63,7 +63,7 @@ function Stats() {
           <Tag index="S.02" label="By the numbers" />
           <Reveal as="p" className="stats-copy">
             Altitude of 1,705–1,880 m, 1,800–2,200 mm of rain a year and rich volcanic soil -
-            101.54 hectares in total, 97.36 of them planted across 12 mapped blocks.
+            167 hectares in total, 97.36 of them planted across 12 mapped blocks.
           </Reveal>
         </div>
         <div ref={nodeRef} className={`stats-grid${started ? " is-visible" : ""}`}>

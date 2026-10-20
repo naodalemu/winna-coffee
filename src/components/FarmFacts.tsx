@@ -12,7 +12,7 @@ function FarmFacts() {
             Inside <em>Nibo Sendeka</em>
           </Reveal>
           <Reveal as="p" className="lede facts-lede" delay={120}>
-            101.54 hectares in the Sheka Zone highlands - the altitude, climate and soil that
+            167 hectares in the Sheka Zone highlands - the altitude, climate and soil that
             shape every bean.
           </Reveal>
         </div>

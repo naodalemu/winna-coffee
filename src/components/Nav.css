@@ -141,6 +141,7 @@
   clip-path: inset(0 0 100% 0);
   transition: clip-path 0.9s var(--ease-io);
   overflow-y: auto;
+  overscroll-behavior: contain;
   scrollbar-width: none;
 }
 

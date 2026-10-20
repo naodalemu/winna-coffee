@@ -17,7 +17,9 @@ import locationPhoto from "../assets/location.jpg";
 import coordinatesPhoto from "../assets/coordinates.jpg";
 import growingConditionsPhoto from "../assets/growing-conditions.jpg";
 import heroPhoto from "../assets/hero.jpg";
-import agricultureThatCaresPhoto from "../assets/agriculture-that-cares.jpg";
+// Hero alternatives awaiting client feedback (both by PROJETO CAFÉ GATO-MOURISCO on Unsplash, Unsplash License):
+// import heroPhoto from "../assets/hero-terraced.jpg"; // unsplash.com/photos/zOVRgigQMQA
+// import heroPhoto from "../assets/ARYdChGYK_s.jpg";   // unsplash.com/photos/ARYdChGYK_s
 
 export interface Credited {
   img: string;
@@ -223,7 +225,7 @@ export const farmProfile: FarmProfileItem[] = [
     img: farmOverviewPhoto,
     ...NO_CREDIT,
     spec: [
-      { k: "Total area", v: "101.54 ha" },
+      { k: "Total area", v: "167 ha" },
       { k: "Coffee blocks", v: "97.36 ha" },
       { k: "Mapped blocks", v: "12 (A1–A12)" },
       { k: "Processing", v: "Wet & dry, on-site" },
@@ -231,13 +233,14 @@ export const farmProfile: FarmProfileItem[] = [
   },
   {
     name: "Location",
-    desc: "Keja Kebele, Masha District, Sheka Zone, SWEPRS, Ethiopia.",
+    desc: "Keja Kebele, Chewaka, Masha District, Sheka Zone, SWEPRS, Ethiopia.",
     slot: "fp-location",
     img: locationPhoto,
     ...NO_CREDIT,
     spec: [
       { k: "Zone", v: "Sheka" },
       { k: "District", v: "Masha" },
+      { k: "Town", v: "Chewaka" },
       { k: "Kebele", v: "Keja" },
       { k: "Region", v: "SWEPRS" },
     ],
@@ -389,10 +392,5 @@ export const heroImage: Credited = {
 
 export const aboutImage: Credited = {
   img: aboutPhoto,
-  ...NO_CREDIT,
-};
-
-export const impactImage: Credited = {
-  img: agricultureThatCaresPhoto,
   ...NO_CREDIT,
 };

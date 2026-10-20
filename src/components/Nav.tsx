@@ -1,5 +1,6 @@
 import { useEffect, useState, type CSSProperties } from "react";
 import { contactEmails, contactPhone, farmCoordinates, navLinks } from "../data/content";
+import { lenis } from "../lib/smoothScroll";
 import "./Nav.css";
 
 function Nav() {
@@ -19,9 +20,11 @@ function Nav() {
       if (e.key === "Escape") setOpen(false);
     };
     document.body.style.overflow = "hidden";
+    lenis?.stop();
     window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = "";
+      lenis?.start();
       window.removeEventListener("keydown", onKey);
     };
   }, [open]);
@@ -64,7 +67,15 @@ function Nav() {
         </div>
       </header>
 
-      <div id="site-menu" className={`menu${open ? " menu-open" : ""}`} aria-hidden={!open} inert={!open}>
+      {/* data-lenis-prevent: Lenis is stopped while the menu is open and would otherwise
+          swallow wheel events, so let the menu scroll natively */}
+      <div
+        id="site-menu"
+        className={`menu${open ? " menu-open" : ""}`}
+        aria-hidden={!open}
+        inert={!open}
+        data-lenis-prevent
+      >
         <div className="menu-inner container">
           <ol className="menu-links">
             {navLinks.map((l, i) => (

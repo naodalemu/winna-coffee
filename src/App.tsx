@@ -32,9 +32,10 @@ function App() {
         <Process />
         <WhyChoose />
         <Impact />
-        <Certifications />
-        <Testimonials />
-        <FAQ />
+        {/* Hidden for now - re-enable and renumber section tags (S.xx) when ready */}
+        {false && <Certifications />}
+        {false && <Testimonials />}
+        {false && <FAQ />}
         <Contact />
       </main>
       <Footer />

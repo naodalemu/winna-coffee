@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { varieties } from "../data/content";
 import { useMediaQuery } from "../hooks/useMediaQuery";
+import { scrollToY } from "../lib/smoothScroll";
 import { Tag } from "./ui";
 import "./CoffeeVarieties.css";
 
@@ -58,7 +59,7 @@ function CoffeeVarieties() {
     }
     const top = section.getBoundingClientRect().top + window.scrollY;
     const travel = section.offsetHeight - window.innerHeight;
-    window.scrollTo({ top: top + ((i + 0.5) / n) * travel, behavior: "smooth" });
+    scrollToY(top + ((i + 0.5) / n) * travel);
   };
 
   const v = varieties[active];
